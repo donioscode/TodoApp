@@ -17,14 +17,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="checklistitem" id="qui-sp-0MG">
-                                <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qui-sp-0MG" id="nZl-Bo-KGG">
-                                    <rect key="frame" x="0.0" y="0.0" width="349" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TodoLists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hn7-Go-xJ0">
-                                            <rect key="frame" x="20" y="11.000000000000002" width="311" height="20.666666666666671"/>
+                                            <rect key="frame" x="20" y="11" width="311" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                     <navigationItem key="navigationItem" title="CheckList" id="E9R-HE-UCY">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="233-ew-WD1">
                             <connections>
-                                <segue destination="h8B-vz-DlT" kind="show" id="dr6-J7-0S3"/>
+                                <segue destination="h8B-vz-DlT" kind="show" identifier="addItemView" id="dr6-J7-0S3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -135,7 +135,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

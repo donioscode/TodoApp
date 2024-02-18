@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate : AnyObject {
+    func addItemVCDone(_ vc: AddItemTableViewController,didFinishAdding item: CheckListItem)
+}
+
 class AddItemTableViewController: UITableViewController {
 
     @IBOutlet weak var addItemTF: UITextField!
-    
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+    weak var delegate : AddItemViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +32,10 @@ class AddItemTableViewController: UITableViewController {
     }
     
     @IBAction func done(){
-        navigationController?.popViewController(animated: true)
-    
+       var item = CheckListItem()
+        item.text =  addItemTF.text!
+        
+        delegate?.addItemVCDone(self, didFinishAdding: item)
     }
 }
 
