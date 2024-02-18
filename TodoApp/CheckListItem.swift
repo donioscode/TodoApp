@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CheckListItem {
+    var text = ""
+    var checked = false
+}

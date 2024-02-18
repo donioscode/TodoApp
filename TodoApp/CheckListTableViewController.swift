@@ -11,15 +11,25 @@ class CheckListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
 
     }
-     
+    
+    var listOfCheckItems = [
+        CheckListItem(text: "Row at 0" , checked: false),
+        CheckListItem(text: "Row at 1" , checked: false),
+        CheckListItem(text: "Row at 2" , checked: false),
+        CheckListItem(text: "Row at 3" , checked: false),
+        CheckListItem(text: "Row at 4" , checked: false)
+    ]
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return listOfCheckItems.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -27,28 +37,28 @@ class CheckListTableViewController: UITableViewController {
         
         
         let label = cell.viewWithTag(1000) as! UILabel
+        let item = listOfCheckItems[indexPath.row]
         
-        if indexPath.row == 0 {
-            label.text = "This is first row"
-        }else if indexPath.row == 2 {
-            label.text = "This is second row"
-        }else if indexPath.row == 3 {
-            label.text = "This is third row"
-        }else if indexPath.row == 4 {
-            label.text = "This is four row"
-        }else{
-            label.text = "This is last row"
+        label.text = item.text
+        
+        if  item.checked {
+            cell.accessoryType = .checkmark
+        }else {
+            cell.accessoryType = .none
         }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
-            }else{
+            
+            var item = listOfCheckItems[indexPath.row]
+            item.checked.toggle()
+            
+            if item.checked {
                 cell.accessoryType = .checkmark
+            }else{
+                cell.accessoryType = .none
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
