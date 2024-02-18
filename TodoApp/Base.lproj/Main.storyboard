@@ -44,7 +44,13 @@
                             <outlet property="delegate" destination="II8-WD-IJe" id="dk6-qY-gVG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="CheckList" id="E9R-HE-UCY"/>
+                    <navigationItem key="navigationItem" title="CheckList" id="E9R-HE-UCY">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="233-ew-WD1">
+                            <connections>
+                                <action selector="addItem" destination="II8-WD-IJe" id="Tzy-u8-1QJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JEZ-1U-4Cj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,6 +76,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

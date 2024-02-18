@@ -16,6 +16,20 @@ class CheckListTableViewController: UITableViewController {
 
     }
     
+    @IBAction func addItem() {
+        let newRowIndex = listOfCheckItems.count
+        
+        var item = CheckListItem()
+        item.text = "I am new row"
+        
+        listOfCheckItems.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        
+        tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
     var listOfCheckItems = [
         CheckListItem(text: "Row at 0" , checked: false),
         CheckListItem(text: "Row at 1" , checked: false),
