@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct CheckListItem {
+class CheckListItem: NSObject {
     var text = ""
     var checked = false
+    
+    init(text: String , checked: Bool) {
+        self.text = text
+        self.checked = checked
+    }
+    
+     override  init() {
+        
+    }
 }

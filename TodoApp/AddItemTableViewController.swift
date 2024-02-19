@@ -9,6 +9,7 @@ import UIKit
 
 protocol AddItemViewControllerDelegate : AnyObject {
     func addItemVCDone(_ vc: AddItemTableViewController,didFinishAdding item: CheckListItem)
+    func addItemVCDone(_ vc: AddItemTableViewController,didFinishEditing item: CheckListItem)
 }
 
 class AddItemTableViewController: UITableViewController {
@@ -17,11 +18,18 @@ class AddItemTableViewController: UITableViewController {
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     weak var delegate : AddItemViewControllerDelegate?
+    var itemToEdit: CheckListItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         doneBarButton.isEnabled = false
         addItemTF.delegate = self
+        
+        if let itemToEdit = itemToEdit {
+            title = "Edit Item"
+            addItemTF.text = itemToEdit.text
+            doneBarButton.isEnabled = true
+        }
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         
     }
@@ -32,10 +40,16 @@ class AddItemTableViewController: UITableViewController {
     }
     
     @IBAction func done(){
-       var item = CheckListItem()
-        item.text =  addItemTF.text!
         
-        delegate?.addItemVCDone(self, didFinishAdding: item)
+        if let itemToEdit = itemToEdit {
+            itemToEdit.text = addItemTF.text!
+            delegate?.addItemVCDone(self, didFinishEditing: itemToEdit)
+        } else {
+            let item = CheckListItem()
+            item.text =  addItemTF.text!
+            
+            delegate?.addItemVCDone(self, didFinishAdding: item)
+        }
     }
 }
 

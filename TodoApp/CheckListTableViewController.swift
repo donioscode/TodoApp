@@ -24,6 +24,13 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
         if segue.identifier ==  "addItemView" {
             let controller = segue.destination as! AddItemTableViewController
             controller.delegate = self
+        } else if segue.identifier == "editItemView" {
+            let controller = segue.destination as! AddItemTableViewController
+            controller.delegate = self
+             
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = listOfCheckItems[indexPath.row]
+            }
         }
     }
     
@@ -37,6 +44,16 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
         let indexPaths = [indexPath]
         
         tableView.insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemVCDone(_ vc: AddItemTableViewController, didFinishEditing item: CheckListItem) {
+        if let index = listOfCheckItems.firstIndex(of: item){
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -59,34 +76,37 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistitem", for: indexPath)
-        
-        
-        let label = cell.viewWithTag(1000) as! UILabel
+      
         let item = listOfCheckItems[indexPath.row]
-        
-        label.text = item.text
-        
-        if  item.checked {
-            cell.accessoryType = .checkmark
-        }else {
-            cell.accessoryType = .none
-        }
+        configureText(for: cell, with: item)
+        configureCheckMark(for: cell, with: item)
+
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            
-            var item = listOfCheckItems[indexPath.row]
+            let item = listOfCheckItems[indexPath.row]
             item.checked.toggle()
-            
-            if item.checked {
-                cell.accessoryType = .checkmark
-            }else{
-                cell.accessoryType = .none
-            }
+            configureCheckMark(for: cell, with: item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func configureText(for cell:UITableViewCell,with item: CheckListItem){
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = item.text
+    }
+    
+    func configureCheckMark(for cell: UITableViewCell,with item: CheckListItem){
+        let label = cell.viewWithTag(1001) as! UILabel
+        
+        if item.checked {
+            label.text = "✅"
+        }else{
+            label.text = ""
+        }
+
     }
     
     
