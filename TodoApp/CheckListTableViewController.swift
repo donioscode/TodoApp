@@ -22,12 +22,13 @@ class CheckListTableViewController: UITableViewController , ItemDetailViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         title = checklist.name
         navigationController?.navigationBar.prefersLargeTitles = true
         loadCheckListItems()
 
     }
+    
+    
     
     @IBAction func addItem() {
        

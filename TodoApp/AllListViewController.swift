@@ -33,6 +33,8 @@ class AllListViewController: UITableViewController {
         if segue.identifier == "showCheckList" {
             let controller = segue.destination as! CheckListTableViewController
             controller.checklist = sender as? CheckList
+        } else if segue.identifier == "showAddCheckList" {
+            
         }
     }
     
