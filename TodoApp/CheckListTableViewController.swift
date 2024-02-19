@@ -17,9 +17,13 @@ class CheckListTableViewController: UITableViewController , ItemDetailViewContro
         CheckListItem(text: "Row at 4" , checked: false)
     ]
     
+    var checklist: CheckList!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        title = checklist.name
         navigationController?.navigationBar.prefersLargeTitles = true
         loadCheckListItems()
 

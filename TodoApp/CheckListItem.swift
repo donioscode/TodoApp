@@ -20,3 +20,13 @@ class CheckListItem: NSObject,Codable {
         
     }
 }
+
+
+class CheckList: NSObject {
+    var name = ""
+    
+    init(name: String ) {
+        self.name = name
+        super.init()
+    }
+}
