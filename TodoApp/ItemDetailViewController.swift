@@ -7,17 +7,17 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate : AnyObject {
-    func addItemVCDone(_ vc: AddItemTableViewController,didFinishAdding item: CheckListItem)
-    func addItemVCDone(_ vc: AddItemTableViewController,didFinishEditing item: CheckListItem)
+protocol ItemDetailViewControllerDelegate : AnyObject {
+    func addItemVCDone(_ vc: ItemDetailViewController,didFinishAdding item: CheckListItem)
+    func addItemVCDone(_ vc: ItemDetailViewController,didFinishEditing item: CheckListItem)
 }
 
-class AddItemTableViewController: UITableViewController {
+class ItemDetailViewController: UITableViewController {
 
     @IBOutlet weak var addItemTF: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
-    weak var delegate : AddItemViewControllerDelegate?
+    weak var delegate : ItemDetailViewControllerDelegate?
     var itemToEdit: CheckListItem?
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class AddItemTableViewController: UITableViewController {
     }
 }
 
-extension AddItemTableViewController: UITextFieldDelegate {
+extension ItemDetailViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text!

@@ -7,12 +7,21 @@
 
 import UIKit
 
-class CheckListTableViewController: UITableViewController , AddItemViewControllerDelegate {
+class CheckListTableViewController: UITableViewController , ItemDetailViewControllerDelegate {
+    
+    var listOfCheckItems = [
+        CheckListItem(text: "Row at 0" , checked: false),
+        CheckListItem(text: "Row at 1" , checked: false),
+        CheckListItem(text: "Row at 2" , checked: false),
+        CheckListItem(text: "Row at 3" , checked: false),
+        CheckListItem(text: "Row at 4" , checked: false)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        loadCheckListItems()
 
     }
     
@@ -22,10 +31,10 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ==  "addItemView" {
-            let controller = segue.destination as! AddItemTableViewController
+            let controller = segue.destination as! ItemDetailViewController
             controller.delegate = self
         } else if segue.identifier == "editItemView" {
-            let controller = segue.destination as! AddItemTableViewController
+            let controller = segue.destination as! ItemDetailViewController
             controller.delegate = self
              
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
@@ -34,7 +43,7 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
         }
     }
     
-    func addItemVCDone(_ vc: AddItemTableViewController, didFinishAdding item: CheckListItem) {
+    func addItemVCDone(_ vc: ItemDetailViewController, didFinishAdding item: CheckListItem) {
         
         let newRowIndex = listOfCheckItems.count
         
@@ -44,27 +53,23 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
         let indexPaths = [indexPath]
         
         tableView.insertRows(at: indexPaths, with: .automatic)
+        saveChecklistItems()
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemVCDone(_ vc: AddItemTableViewController, didFinishEditing item: CheckListItem) {
+    func addItemVCDone(_ vc: ItemDetailViewController, didFinishEditing item: CheckListItem) {
         if let index = listOfCheckItems.firstIndex(of: item){
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
             }
         }
+        saveChecklistItems()
         navigationController?.popViewController(animated: true)
     }
     
     
-    var listOfCheckItems = [
-        CheckListItem(text: "Row at 0" , checked: false),
-        CheckListItem(text: "Row at 1" , checked: false),
-        CheckListItem(text: "Row at 2" , checked: false),
-        CheckListItem(text: "Row at 3" , checked: false),
-        CheckListItem(text: "Row at 4" , checked: false)
-    ]
+
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -90,6 +95,7 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
             item.checked.toggle()
             configureCheckMark(for: cell, with: item)
         }
+        saveChecklistItems()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -115,6 +121,44 @@ class CheckListTableViewController: UITableViewController , AddItemViewControlle
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        saveChecklistItems()
     }
 
+}
+
+extension CheckListTableViewController {
+    func documentsDirectory() -> URL? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths.first
+    }
+    
+    func dataFilePath() ->URL {
+        return documentsDirectory()!.appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistItems() {
+        let encoder  = PropertyListEncoder()
+        
+        do {
+            let data = try! encoder.encode(listOfCheckItems)
+            try data.write(to: dataFilePath(),options: Data.WritingOptions.atomic)
+        } catch {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func loadCheckListItems() {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                listOfCheckItems = try decoder.decode([CheckListItem].self, from: data)
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
 }

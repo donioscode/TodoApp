@@ -17,20 +17,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="checklistitem" id="qui-sp-0MG">
-                                <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qui-sp-0MG" id="nZl-Bo-KGG">
-                                    <rect key="frame" x="0.0" y="0.0" width="330.66666666666669" height="42.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="330.66666666666669" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TodoLists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hn7-Go-xJ0">
-                                            <rect key="frame" x="49" y="11.000000000000002" width="263.66666666666669" height="20.666666666666671"/>
+                                            <rect key="frame" x="49" y="11" width="263.66666666666669" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXS-PX-vwa">
-                                            <rect key="frame" x="20" y="11.000000000000002" width="21" height="20.666666666666671"/>
+                                            <rect key="frame" x="20" y="11" width="21" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="21" id="lLm-4w-AM6"/>
                                             </constraints>
@@ -50,7 +50,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="h8B-vz-DlT" kind="show" identifier="editItemView" id="iHe-fZ-lNJ"/>
+                                    <segue destination="h8B-vz-DlT" kind="show" identifier="editItemView" trigger="accessoryAction" id="1NS-WE-arC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -74,7 +74,7 @@
         <!--Add Item-->
         <scene sceneID="OZ6-lG-Tsf">
             <objects>
-                <tableViewController id="h8B-vz-DlT" customClass="AddItemTableViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="h8B-vz-DlT" customClass="ItemDetailViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="clm-KL-vg5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +150,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iHe-fZ-lNJ"/>
+        <segue reference="1NS-WE-arC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
