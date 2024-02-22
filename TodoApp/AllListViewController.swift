@@ -8,7 +8,7 @@
 import UIKit
 
 class AllListViewController: UITableViewController {
-    
+  
     var list = [CheckList]()
 
     override func viewDidLoad() {
@@ -34,7 +34,8 @@ class AllListViewController: UITableViewController {
             let controller = segue.destination as! CheckListTableViewController
             controller.checklist = sender as? CheckList
         } else if segue.identifier == "showAddCheckList" {
-            
+            let controller = segue.destination as! ListDetailViewController
+            controller.delegate = self
         }
     }
     
@@ -62,5 +63,41 @@ class AllListViewController: UITableViewController {
         let checklist = list[indexPath.row]
         
         performSegue(withIdentifier: "showCheckList", sender: checklist)
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let controller = storyboard!.instantiateViewController(withIdentifier: "ListDetailViewController") as! ListDetailViewController
+        controller.delegate = self
+        let checklist = list[indexPath.row]
+        controller.itemToEdit = checklist
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+}
+
+extension AllListViewController: ListDetailViewControllerDelegate {
+    func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checkList: CheckList) {
+        let newRowIndex = list.count
+        
+        list.append(checkList)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated: true)
+
+    }
+    
+    func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checkList: CheckList) {
+        if let index = list.firstIndex(of: checkList){
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.textLabel?.text = checkList.name
+            }
+        }
+        navigationController?.popViewController(animated: true)
     }
 }
