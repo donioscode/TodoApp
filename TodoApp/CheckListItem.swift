@@ -22,11 +22,24 @@ class CheckListItem: NSObject,Codable {
 }
 
 
-class CheckList: NSObject {
+class CheckList: NSObject, Codable{
     var name = ""
-    
+    var items: [CheckListItem] = []
     init(name: String ) {
         self.name = name
         super.init()
+    }
+    
+    func countUncheckedItems() -> String  {
+        var count = 0
+        
+        for item in items where !item.checked  {
+            count += 1
+        }
+        if count == 0 {
+            return "No items"
+        } else {
+            return " \(count) Remaing"
+        }
     }
 }

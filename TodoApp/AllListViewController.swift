@@ -23,7 +23,7 @@ class AllListViewController: UITableViewController {
         list.append(homeWorks)
         list.append(uni)
         list.append(homeDuty)
-        
+        loadCheckListItems()
         title = "Check List"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -53,6 +53,7 @@ class AllListViewController: UITableViewController {
         let checkItem = list[indexPath.row]
         
         cell.textLabel?.text = checkItem.name
+        cell.detailTextLabel?.text = "\(checkItem.countUncheckedItems())"
         cell.accessoryType = .detailDisclosureButton
         
         return cell
@@ -101,3 +102,41 @@ extension AllListViewController: ListDetailViewControllerDelegate {
         navigationController?.popViewController(animated: true)
     }
 }
+
+extension AllListViewController {
+    func documentsDirectory() -> URL? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths.first
+    }
+    
+    func dataFilePath() ->URL {
+        return documentsDirectory()!.appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistItems() {
+        let encoder  = PropertyListEncoder()
+        
+        do {
+            let data = try! encoder.encode(list)
+            try data.write(to: dataFilePath(),options: Data.WritingOptions.atomic)
+        } catch {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func loadCheckListItems() {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                list = try decoder.decode([CheckList].self, from: data)
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+}
+
