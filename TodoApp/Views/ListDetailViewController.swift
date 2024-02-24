@@ -53,10 +53,11 @@ class ListDetailViewController: UITableViewController {
         if let itemToEdit = itemToEdit {
             
             itemToEdit.name = textField.text!
+            itemToEdit.iconName = iconName
             delegate?.listDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
             
-            let item = CheckList(name: textField.text!)
+            let item = CheckList(name: textField.text!,iconName: iconName)
             delegate?.listDetailViewController(self, didFinishAdding: item)
         }
     }
