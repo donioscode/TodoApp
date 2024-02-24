@@ -16,9 +16,12 @@ class ListDetailViewController: UITableViewController {
 
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var iconImage: UIImageView!
     
     weak var delegate : ListDetailViewControllerDelegate?
     var itemToEdit: CheckList?
+    
+    var iconName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,13 @@ class ListDetailViewController: UITableViewController {
         textField.becomeFirstResponder()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showIcon" {
+            let vc = segue.destination as! PickIconViewController
+            vc.delegate = self
+        }
+    }
+    
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         if let itemToEdit = itemToEdit {
             
@@ -49,6 +59,11 @@ class ListDetailViewController: UITableViewController {
             let item = CheckList(name: textField.text!)
             delegate?.listDetailViewController(self, didFinishAdding: item)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath.section == 1 ? indexPath: nil
+        
     }
 }
 
@@ -69,4 +84,12 @@ extension ListDetailViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension ListDetailViewController: PickIconViewControllerDelegate {
+    func iconPicker(_ picker: PickIconViewController, didPick iconName: String) {
+        self.iconName = iconName
+        iconImage.image = UIImage(named: iconName)
+        navigationController?.popViewController(animated: true)
+    }
 }

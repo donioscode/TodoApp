@@ -19,7 +19,7 @@ class AllListViewController: UITableViewController {
         let uni = CheckList(name: "UniversityTasks")
         let homeDuty = CheckList(name: "HomeDuty")
         
-   
+        
         list.append(homeWorks)
         list.append(uni)
         list.append(homeDuty)
@@ -52,9 +52,11 @@ class AllListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
         let checkItem = list[indexPath.row]
         
+        cell.imageView?.image = UIImage(named: checkItem.iconName)
         cell.textLabel?.text = checkItem.name
         cell.detailTextLabel?.text = "\(checkItem.countUncheckedItems())"
         cell.accessoryType = .detailDisclosureButton
+        
         
         return cell
     }

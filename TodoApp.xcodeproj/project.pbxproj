@@ -11,6 +11,7 @@
 		91A9035A2B82169800C7F3E9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A903592B82169800C7F3E9 /* ItemDetailViewController.swift */; };
 		91B519562B83365300054F7E /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B519552B83365300054F7E /* AllListViewController.swift */; };
 		91E409972B835B1E0092FD36 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E409962B835B1E0092FD36 /* ListDetailViewController.swift */; };
+		91EA4A122B89F1AD0070C333 /* PickIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EA4A112B89F1AD0070C333 /* PickIconViewController.swift */; };
 		91F2BE272B80916700994813 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2BE262B80916700994813 /* AppDelegate.swift */; };
 		91F2BE292B80916700994813 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2BE282B80916700994813 /* SceneDelegate.swift */; };
 		91F2BE2E2B80916700994813 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F2BE2C2B80916700994813 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		91A903592B82169800C7F3E9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		91B519552B83365300054F7E /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		91E409962B835B1E0092FD36 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		91EA4A112B89F1AD0070C333 /* PickIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickIconViewController.swift; sourceTree = "<group>"; };
 		91F2BE232B80916700994813 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F2BE262B80916700994813 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91F2BE282B80916700994813 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9159CD7D2B88A443005B424C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91A903572B80B23E00C7F3E9 /* CheckListItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9159CD7E2B88A455005B424C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91F2BE3A2B8091E900994813 /* CheckListTableViewController.swift */,
+				91A903592B82169800C7F3E9 /* ItemDetailViewController.swift */,
+				91B519552B83365300054F7E /* AllListViewController.swift */,
+				91E409962B835B1E0092FD36 /* ListDetailViewController.swift */,
+				91EA4A112B89F1AD0070C333 /* PickIconViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9159CD7F2B88A484005B424C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				91F2BE262B80916700994813 /* AppDelegate.swift */,
+				91F2BE282B80916700994813 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		91F2BE1A2B80916700994813 = {
 			isa = PBXGroup;
 			children = (
@@ -64,14 +95,10 @@
 		91F2BE252B80916700994813 /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
-				91F2BE262B80916700994813 /* AppDelegate.swift */,
-				91F2BE282B80916700994813 /* SceneDelegate.swift */,
-				91F2BE3A2B8091E900994813 /* CheckListTableViewController.swift */,
-				91A903572B80B23E00C7F3E9 /* CheckListItem.swift */,
-				91A903592B82169800C7F3E9 /* ItemDetailViewController.swift */,
-				91B519552B83365300054F7E /* AllListViewController.swift */,
+				9159CD7F2B88A484005B424C /* App */,
+				9159CD7E2B88A455005B424C /* Views */,
+				9159CD7D2B88A443005B424C /* Model */,
 				91F2BE2C2B80916700994813 /* Main.storyboard */,
-				91E409962B835B1E0092FD36 /* ListDetailViewController.swift */,
 				91F2BE2F2B80916800994813 /* Assets.xcassets */,
 				91F2BE312B80916800994813 /* LaunchScreen.storyboard */,
 				91F2BE342B80916800994813 /* Info.plist */,
@@ -156,6 +183,7 @@
 				91A9035A2B82169800C7F3E9 /* ItemDetailViewController.swift in Sources */,
 				91F2BE3B2B8091E900994813 /* CheckListTableViewController.swift in Sources */,
 				91A903582B80B23E00C7F3E9 /* CheckListItem.swift in Sources */,
+				91EA4A122B89F1AD0070C333 /* PickIconViewController.swift in Sources */,
 				91F2BE292B80916700994813 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
