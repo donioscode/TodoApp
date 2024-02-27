@@ -8,8 +8,11 @@
 import Foundation
 
 class CheckListItem: NSObject,Codable {
+    var id = UUID().uuidString
     var text = ""
     var checked = false
+    var dueDate = Date()
+    var shouldRemind = false
     
     init(text: String , checked: Bool) {
         self.text = text
