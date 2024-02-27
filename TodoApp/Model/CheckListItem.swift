@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class CheckListItem: NSObject,Codable {
     var id = UUID().uuidString
@@ -21,6 +22,22 @@ class CheckListItem: NSObject,Codable {
     
      override  init() {
         
+    }
+    
+    func scheduleNotification(){
+        if shouldRemind && dueDate > Date() {
+            let content = UNMutableNotificationContent()
+            content.title = "Reminder"
+            content.body = text
+            content.sound = UNNotificationSound.default
+            
+            let calendar = Calendar(identifier: .gregorian)
+            let components = calendar.dateComponents([.year,.month,.day,.hour,.minute], from: dueDate)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger )
+        }
     }
 }
 
