@@ -43,17 +43,27 @@ class ItemDetailViewController: UITableViewController {
         addItemTF.becomeFirstResponder()
     }
     
+    @IBAction func shouldRemaindToggled(_ sender: UISwitch) {
+        addItemTF.resignFirstResponder()
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert,.sound]) { _, _ in
+            
+        }
+    }
     @IBAction func done(){
         
         if let itemToEdit = itemToEdit {
             itemToEdit.text = addItemTF.text!
             itemToEdit.shouldRemind = shouldRemindSwich.isOn
             itemToEdit.dueDate = datePicker.date
+            
+            itemToEdit.scheduleNotification()
             delegate?.addItemVCDone(self, didFinishEditing: itemToEdit)
         } else {
             let item = CheckListItem()
             item.text =  addItemTF.text!
             
+            item.scheduleNotification()
             item.shouldRemind = shouldRemindSwich.isOn
             item.dueDate = datePicker.date
             

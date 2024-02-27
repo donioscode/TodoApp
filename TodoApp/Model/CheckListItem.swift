@@ -24,7 +24,9 @@ class CheckListItem: NSObject,Codable {
         
     }
     
-    func scheduleNotification(){
+    func scheduleNotification() {
+        
+        removeNotification()
         if shouldRemind && dueDate > Date() {
             let content = UNMutableNotificationContent()
             content.title = "Reminder"
@@ -32,12 +34,24 @@ class CheckListItem: NSObject,Codable {
             content.sound = UNNotificationSound.default
             
             let calendar = Calendar(identifier: .gregorian)
-            let components = calendar.dateComponents([.year,.month,.day,.hour,.minute], from: dueDate)
+            let components = calendar.dateComponents([.year,.month,.day,.hour,.minute,.second], from: dueDate)
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             
             let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger )
+            
+            let center = UNUserNotificationCenter.current()
+            center.add(request)
         }
+    }
+    
+    func removeNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    
+    deinit {
+        removeNotification()
     }
 }
 
