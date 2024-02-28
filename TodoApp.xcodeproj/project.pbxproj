@@ -12,6 +12,8 @@
 		91A9035A2B82169800C7F3E9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A903592B82169800C7F3E9 /* ItemDetailViewController.swift */; };
 		91B519562B83365300054F7E /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B519552B83365300054F7E /* AllListViewController.swift */; };
 		91C6AF222B8F398D00092DE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91C6AF212B8F398D00092DE0 /* GoogleService-Info.plist */; };
+		91C6AF242B8F458100092DE0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6AF232B8F458100092DE0 /* RegistrationViewController.swift */; };
+		91C6AF262B8F45BA00092DE0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6AF252B8F45BA00092DE0 /* LoginViewController.swift */; };
 		91E409972B835B1E0092FD36 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E409962B835B1E0092FD36 /* ListDetailViewController.swift */; };
 		91EA4A122B89F1AD0070C333 /* PickIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EA4A112B89F1AD0070C333 /* PickIconViewController.swift */; };
 		91F2BE272B80916700994813 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2BE262B80916700994813 /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 		91A903592B82169800C7F3E9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		91B519552B83365300054F7E /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		91C6AF212B8F398D00092DE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		91C6AF232B8F458100092DE0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		91C6AF252B8F45BA00092DE0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		91E409962B835B1E0092FD36 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		91EA4A112B89F1AD0070C333 /* PickIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickIconViewController.swift; sourceTree = "<group>"; };
 		91F2BE232B80916700994813 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,11 +95,13 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		91C6AF202B8F35F300092DE0 /* New Group */ = {
+		91C6AF202B8F35F300092DE0 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				91C6AF232B8F458100092DE0 /* RegistrationViewController.swift */,
+				91C6AF252B8F45BA00092DE0 /* LoginViewController.swift */,
 			);
-			path = "New Group";
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		91F2BE1A2B80916700994813 = {
@@ -119,7 +125,7 @@
 		91F2BE252B80916700994813 /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
-				91C6AF202B8F35F300092DE0 /* New Group */,
+				91C6AF202B8F35F300092DE0 /* Auth */,
 				9159CD7F2B88A484005B424C /* App */,
 				9159CD7E2B88A455005B424C /* Views */,
 				9159CD7D2B88A443005B424C /* Model */,
@@ -260,10 +266,12 @@
 				91B519562B83365300054F7E /* AllListViewController.swift in Sources */,
 				91E409972B835B1E0092FD36 /* ListDetailViewController.swift in Sources */,
 				91F2BE272B80916700994813 /* AppDelegate.swift in Sources */,
+				91C6AF242B8F458100092DE0 /* RegistrationViewController.swift in Sources */,
 				91A9035A2B82169800C7F3E9 /* ItemDetailViewController.swift in Sources */,
 				91F2BE3B2B8091E900994813 /* CheckListTableViewController.swift in Sources */,
 				91A903582B80B23E00C7F3E9 /* CheckListItem.swift in Sources */,
 				91EA4A122B89F1AD0070C333 /* PickIconViewController.swift in Sources */,
+				91C6AF262B8F45BA00092DE0 /* LoginViewController.swift in Sources */,
 				91F2BE292B80916700994813 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
