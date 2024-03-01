@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AllListViewController: UITableViewController {
   
@@ -14,7 +15,7 @@ class AllListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationItem.setHidesBackButton(true, animated: true)
         let homeWorks = CheckList(name: "HomeWorks")
         let uni = CheckList(name: "UniversityTasks")
         let homeDuty = CheckList(name: "HomeDuty")
@@ -152,5 +153,14 @@ extension AllListViewController {
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
+//    Logoutpressed!!!
+//    let firebaseAuth = Auth.auth()
+//    do {
+//      try firebaseAuth.signOut()
+//        navigationController?.popToRootViewController(animated: true)
+//    } catch let signOutError as NSError {
+//      print("Error signing out: %@", signOutError)
+//    }
+
 }
 
