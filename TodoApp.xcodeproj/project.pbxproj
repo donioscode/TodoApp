@@ -22,6 +22,8 @@
 		91F2BE3B2B8091E900994813 /* CheckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2BE3A2B8091E900994813 /* CheckListTableViewController.swift */; };
 		91F785972B91D97C006FB5ED /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F785962B91D97C006FB5ED /* SignUpViewController.swift */; };
 		91F785992B91D98E006FB5ED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F785982B91D98E006FB5ED /* LoginViewController.swift */; };
+		91F785A32B92705A006FB5ED /* Signup.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F785A12B92705A006FB5ED /* Signup.json */; };
+		91F785A42B92705A006FB5ED /* Login-page.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F785A22B92705A006FB5ED /* Login-page.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		91F2BE3A2B8091E900994813 /* CheckListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListTableViewController.swift; sourceTree = "<group>"; };
 		91F785962B91D97C006FB5ED /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		91F785982B91D98E006FB5ED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		91F785A12B92705A006FB5ED /* Signup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Signup.json; sourceTree = "<group>"; };
+		91F785A22B92705A006FB5ED /* Login-page.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Login-page.json"; sourceTree = "<group>"; };
 		B659DCC12F451896BEFFE7F7 /* Pods-TodoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoApp/Pods-TodoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D220270BAD289AC9919D3C8A /* Pods_TodoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,13 +133,23 @@
 				9159CD7F2B88A484005B424C /* App */,
 				9159CD7E2B88A455005B424C /* Views */,
 				9159CD7D2B88A443005B424C /* Model */,
+				91F7859A2B92688E006FB5ED /* Assets */,
 				91F2BE2C2B80916700994813 /* Main.storyboard */,
-				91F2BE2F2B80916800994813 /* Assets.xcassets */,
 				91F2BE312B80916800994813 /* LaunchScreen.storyboard */,
 				91F2BE342B80916800994813 /* Info.plist */,
 				91C6AF212B8F398D00092DE0 /* GoogleService-Info.plist */,
 			);
 			path = TodoApp;
+			sourceTree = "<group>";
+		};
+		91F7859A2B92688E006FB5ED /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				91F2BE2F2B80916800994813 /* Assets.xcassets */,
+				91F785A22B92705A006FB5ED /* Login-page.json */,
+				91F785A12B92705A006FB5ED /* Signup.json */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		BCD2E607C0C0CC969F8CFEA6 /* Pods */ = {
@@ -209,8 +223,10 @@
 			files = (
 				91F2BE332B80916800994813 /* LaunchScreen.storyboard in Resources */,
 				91C6AF222B8F398D00092DE0 /* GoogleService-Info.plist in Resources */,
+				91F785A42B92705A006FB5ED /* Login-page.json in Resources */,
 				91F2BE302B80916800994813 /* Assets.xcassets in Resources */,
 				91F2BE2E2B80916700994813 /* Main.storyboard in Resources */,
+				91F785A32B92705A006FB5ED /* Signup.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

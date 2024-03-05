@@ -8,4 +8,5 @@ target 'TodoApp' do
   # Pods for TodoApp
 	pod 'FirebaseAuth'
 	pod 'FirebaseFirestore'
+	pod 'lottie-ios'
 end

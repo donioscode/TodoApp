@@ -35,6 +35,16 @@ class AllListViewController: UITableViewController {
     }
     
     
+    @IBAction func logOutbnTapped(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+          do {
+            try firebaseAuth.signOut()
+              navigationController?.popToRootViewController(animated: true)
+          } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+          }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCheckList" {
             let controller = segue.destination as! CheckListTableViewController
@@ -153,14 +163,5 @@ extension AllListViewController {
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
-//    Logoutpressed!!!
-//    let firebaseAuth = Auth.auth()
-//    do {
-//      try firebaseAuth.signOut()
-//        navigationController?.popToRootViewController(animated: true)
-//    } catch let signOutError as NSError {
-//      print("Error signing out: %@", signOutError)
-//    }
-
 }
 
